@@ -8,6 +8,25 @@
 
 */
 
+(function($) {
+	$.fn.serializeFormJSON = function() {
+
+		var o = {};
+		var a = this.serializeArray();
+		$.each(a, function() {
+			if (o[this.name]) {
+				if (!o[this.name].push) {
+					o[this.name] = [o[this.name]];
+				}
+				o[this.name].push(this.value || '');
+			} else {
+				o[this.name] = this.value || '';
+			}
+		});
+		return o;
+	};
+})(jQuery);
+
 function getURLParameter(name) {
 	var regexS = "[\\?&]" + name + "=([^&#]*)";
 	var regex = new RegExp(regexS);
@@ -44,9 +63,9 @@ function setObjectPathValue(source, path, value) {
 	return target;
 }
 function collectFormData(form) {
-	var CM_data = new Object();
-	$(form).find('[name]').each(function() {
-		setObjectPathValue(CM_data, $(this).attr('name'), $(this).val());
-	});
-	return CM_data;
+
+	//$(form).find('[name]').each(function() {
+	//	setObjectPathValue(CM_data, $(this).attr('name'), $(this).val());
+	//});
+return $(form).serializeFormJSON();
 }

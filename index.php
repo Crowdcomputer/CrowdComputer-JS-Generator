@@ -16,10 +16,10 @@ include('js/cc.js');
 //Depending on the type we attach different functionality
 //-----------------------------------------------------------------
 //On form submit sends all the data to CrowdComputer
-if ($_GET['type']='send_all_to_crowdcomputer')
+if ($_GET['type']=='send_all_to_crowdcomputer')
 	include('js/sendAll.js');
 //-----------------------------------------------------------------
 //On form submit sends all the data to Mturk, CrowdComputer
-if ($_GET['platform']='send_all_to_mturk')
+if ($_GET['type']=='send_all_to_mturk')
 	include('js/mturk.js');
 ?>

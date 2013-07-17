@@ -1,75 +1,143 @@
 //GET url pars
+console.log("croco4TurkAndCC");
 
-$(document).ready(function() { 
-	//if we are not in Mturk don't to anythin     
-	if (gup('hitId')==null)   {  
-		console.log("not in MTURK");
-		return;                
-		}
-	else {        
-		$("form input[type=submit]").attr("value", "Submit to MTurk");
-      }
-		
-	//
-	// Check if the worker is PREVIEWING the HIT or if they've ACCEPTED the HIT
-	//
-	if (gup('assignmentId') == "ASSIGNMENT_ID_NOT_AVAILABLE") {
-		// If we're previewing, disable the button and give it a helpful message
-		$("form").find(':input').prop("disabled",true);    
-		var msg=  "You must ACCEPT the HIT before you can submit the results."
-		$("form input[type=submit]").attr("value", msg);
-		$('body').prepend("<h1 style=\"color:red\">"+msg+"</h1>")
-	}
+$(document).ready(
 
-	//this should automatically find the form.  
-	$("form input[type=submit]").click(
+function() {
+    // if we are not in Mturk don't to anythin
+    if (getURLParameter('hitId') == null) {
+        console.log("not in MTURK");
+        return;
+    } else {
+$("form input[type=submit]").attr("value", "Submit to CC, Turk and Requester");
+    }
 
-	function() {                       
-		 $("form input[type=submit]").prop("disabled",true); 
-		 $("form input[type=submit]").attr("value", "Sending data, please wait");    
-		var action = $("form").attr("action");
-		//add hitid and assignmentID to form data.
-		// hit id is not of mturk class, so it's not stored twice in MTURK results
-		var hitId = $('<input/>').attr({ type: 'hidden', id: 'hitID', name: 'hitID', value: gup('hitId')}) ;
-	    $("form").append(hitId);    
-		var wokerID = $('<input/>').attr({ type: 'hidden', id: 'workerID', name: 'assignmentId', value: gup('workerId')});  
-		$("form").append(wokerID);
-		//assignmetID is of mturk class, so it's store. This is mandatory from MTurk
-		var assignmentId = $('<input/>').attr({ type: 'hidden', id: 'assignmentId', name: 'assignmentId', value: gup('assignmentId'),"class": "mturk" });  
-	    $("form").append(assignmentId); 
-	                                         
-		
-	
-	
-		//do an asyn post here  with all the form data to the original URL.
-	   	 $.ajax({
-			  type: 'POST',
-			  url: action,
-			  data: $("form").serialize(),
-			  success: function(data){                       
-								// if the post replies with some data we add them to the form.
-								//this is the form that will be sent to MTurk
-			                    $.each($.parseJSON(data), function(i,el) {   
-									  var input = $('<input/>').attr({ type: 'hidden', id: el.id, name: el.id, value: el.value, "class": "mturk" }) ;
-								      $("form").append(input);
-								    });
-			            },
-			  async:false
-			});                
-			
-		//this function just checks where to send the data   
-		$("form").attr("action",decode(gup("turkSubmitTo"))+"/mturk/externalSubmit") ;
-		// if (document.referrer && (document.referrer.indexOf('workersandbox') != -1)) {
-		// 			$("form").attr("action", "http://workersandbox.mturk.com/mturk/externalSubmit");
-		// 		} else {
-		// 			$("form").attr("action", "http://www.mturk.com/mturk/externalSubmit");
-		// 		}     
-   
-		//disable all the fields that does not have to send to mturk.         
-		var fields = $('form input:not(.mturk) ');
-		fields.prop("disabled", true);
-		//this disable also the send, so we have to submit the form to mturk            
-		$("form").submit();
-		//here the form is sent to mturk.
-	});
+    //
+    // Check if the worker is PREVIEWING the HIT or if they've
+    // ACCEPTED the HIT
+    //
+    if (getURLParameter('assignmentId') == "ASSIGNMENT_ID_NOT_AVAILABLE") {
+        // If we're previewing, disable the button and give it a
+        // helpful message
+        $("form").find(':input').prop("disabled", true);
+        var msg = "You must ACCEPT the HIT before you can submit the results."
+        $("form input[type=submit]").attr("value", msg);
+        $('body').prepend("<h1 style=\"color:red\">" + msg + "</h1>")
+    }
+
+    // this should automatically find the form.
+    $("form input[type=submit]").click(
+
+    function() {
+        $("form input[type=submit]").prop("disabled", true);
+        $("form input[type=submit]").attr("value", "Sending data, please wait");
+        var action = $("form").attr("action");
+        // add hitid and assignmentID to form
+        // data.
+        // hit id is not of mturk class, so it's
+        // not stored twice in MTURK results
+        var hitId = $('<input/>').attr({
+            type: 'hidden',
+            id: 'hitId',
+            name: 'hitId',
+            value: getURLParameter('hitId'),  
+			"class": "dev-croco" 
+        });
+        $("form").append(hitId);
+        var wokerID = $('<input/>').attr({
+            type: 'hidden',
+            id: 'workerId',
+            name: 'workerId',
+            value: getURLParameter('workerId'),
+			"class": "dev-croco"
+        });
+        $("form").append(wokerID);
+        // assignmetID is of mturk class, so
+        // it's store. This is mandatory from
+        // MTurk
+        var assignmentId = $('<input/>').attr({
+            type: 'hidden',
+            id: 'assignmentId',
+            name: 'assignmentId',
+            value: getURLParameter('assignmentId'),
+            "class": "croco"
+        });
+        $("form").append(assignmentId);
+
+        // do an asyn post here with all the
+        // form data to the original URL.
+        $.ajax({
+            type: 'POST',
+            url: action,
+            data: $("form").serialize(),
+            success: function(data) {
+                // if the post replies
+                // with some data we add
+                // them to the form.
+                // this is the form that
+                // will be sent to MTurk
+                // $.each(
+                //              $.parseJSON(data), function(
+                //              i, el) {
+                //                  var input = $('<input/>').attr({
+                //                      type: 'hidden',
+                //                      id: el.id,
+                //                      name: el.id,
+                //                      value: el.value,
+                //                      "class": "croco"
+                //                  });
+                //                  $("form").append(
+                //                  input);
+                //              });   
+            },
+            async: false
+        });
+        var csrftoken = "'" + getURLParameter("csrf") + "'";
+
+        // send to croco
+        //var fields = $('form input:not(.croco) ');
+        //fields.prop("disabled", true);     
+		wokerID.prop("disabled",false);  
+		hitId.prop("disabled",false);  
+
+        var task_instance_uuid = getURLParameter('uuid');
+        console.log(task_instance_uuid);
+        var url = decode(getURLParameter('ccl')) + '/exe/taskinstance/' + task_instance_uuid + '/finish/';
+        console.log(url);
+        // cross domain must be async, so
+        // everything is in the success
+        // function.
+        console.log($("form").serialize());
+/*
+										 * //if using crossdomain and server
+										 * headers (does not work) $.ajax({
+										 * type: 'POST', url: url, data:
+										 * $("form").serialize(), dataType:
+										 * 'json', crossDomain: true, success:
+										 * function(data){ console.log(data);
+										 * $("form").attr("action",decode(gup("turkSubmitTo"))+"/mturk/externalSubmit") ;
+										 * $("form").submit(); }, });
+										 */
+        // trick for cross domain.        
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'jsonp',
+            data: $("form").serialize(),
+            success: function(data) {
+                console.log(data);
+                // on success sends to
+                // turk.   
+				wokerID.prop("disabled",true);  
+				hitId.prop("disabled",true); 
+				  
+                $("form").attr("action", decode(getURLParameter("turkSubmitTo")) + "/mturk/externalSubmit");
+                $("form").submit();
+            },
+            beforeSend: function(xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            },
+            jsonp: 'jsonp'
+        });
+    });
 });
