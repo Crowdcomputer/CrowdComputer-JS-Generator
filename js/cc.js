@@ -1,6 +1,7 @@
 /*
 
 - getURLParameter (used to get 'parent' parameter from the url)
+- decode method decodes the query parameters that were URL-encoded
 - sendDataToCC (used to send message_in_JSON to crowdcomputer via postMessage)
 - setObjectPathValue (puts to the given object value of the given element)
 - collectFormData (returns an object with information of elements of the given form)
@@ -16,6 +17,12 @@ function getURLParameter(name) {
 		return null;
 	return results[1];
 }
+
+function decode(strToDecode) {
+	var encoded = strToDecode;
+	return unescape(encoded.replace(/\+/g, " "));
+}
+
 function sendDataToCC(message_in_JSON,parent_url) {
 	var url;
 	if (parent_url) //if parent_url is defined as an argument to this function
