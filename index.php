@@ -21,5 +21,5 @@ if ($_GET['type']=='send_all_to_crowdcomputer')
 //-----------------------------------------------------------------
 //On form submit sends all the data to Mturk, CrowdComputer
 if ($_GET['type']=='send_all_to_mturk')
-	include('js/mturk.js');
+	include('js/mturk_with_php.js');
 ?>
