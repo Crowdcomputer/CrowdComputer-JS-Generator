@@ -40,7 +40,7 @@ $("form input[type=submit]").attr("value", "Submit to CC, Turk and Requester");
         var hitId = $('<input/>').attr({
             type: 'hidden',
            // id: 'hitID',
-            name: 'hitID',
+            name: 'hitId',
             value: getURLParameter('hitId'),  
             "class": "dev-croco" 
         });
@@ -48,7 +48,7 @@ $("form input[type=submit]").attr("value", "Submit to CC, Turk and Requester");
         var wokerID = $('<input/>').attr({
             type: 'hidden',
            // id: 'workerID',
-            name: 'workerID',
+            name: 'workerId',
             value: getURLParameter('workerId'),
             "class": "dev-croco"
         });
