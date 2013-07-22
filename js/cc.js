@@ -50,6 +50,7 @@ function sendDataToCC(message_in_JSON,parent_url) {
 		url=parent_url=getURLParameter('parent')
 	else  //else it takes the window.parent.location
 		url = (window.location != window.parent.location) ? document.referrer : document.location;
+	console.log('sending data via postMessage to '+url)
 	$.postMessage((message_in_JSON), url, parent);
 }
 function setObjectPathValue(source, path, value) {
