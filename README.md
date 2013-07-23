@@ -4,7 +4,7 @@ CrowdComputer-JS-Generator
 CrowdComputer and Amazon Mechanical TURK.</h5>
 
 Here is an example of the page, which sends data to both CrowdComputer and MTURK
-<pre>
+<source>
 	<html>
 	<head>
 	</head>
@@ -21,7 +21,7 @@ Here is an example of the page, which sends data to both CrowdComputer and MTURK
 			<script src="http://static.crowdcomputer.org/CC-JS-Generator/?type=send_all_to_mturk"></script>
 		</body>
 		</html>
-</pre>
+</source>
 <hr>
 	<h4>Deployed version:</h4>
 	<p>
