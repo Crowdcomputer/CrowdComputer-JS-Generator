@@ -4,29 +4,23 @@ CrowdComputer-JS-Generator
 CrowdComputer and Amazon Mechanical TURK.</h5>
 
 Here is an example of the page, which sends data to both CrowdComputer and MTURK
-<source>
-	<html>
-	<head>
-	</head>
-	<body>
+
+
 		<h1>Hello John!</h1>
 		<form action="" method="POST">
 			<input type="text" id='firstname' name="firstname" value="my name">
 			<input type="text" id='lastname' name="lastname" value="my lastname">
 
 			<input type="submit" value="save">
-			</form>
+		</form>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="http://static.crowdcomputer.org/CC-JS-Generator/?type=send_all_to_mturk"></script>
 
-			<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-			<script src="http://static.crowdcomputer.org/CC-JS-Generator/?type=send_all_to_mturk"></script>
-		</body>
-		</html>
-</source>
-<hr>
-	<h4>Deployed version:</h4>
-	<p>
-	<a target='_blank' href='http://static.crowdcomputer.org/CC-JS-Generator/'>http://static.crowdcomputer.org/CC-JS-Generator/</a>
 
+<hr/>
+<h4>Deployed version:</h4>
+<p>
+<a target='_blank' href='http://static.crowdcomputer.org/CC-JS-Generator/'>http://static.crowdcomputer.org/CC-JS-Generator/</a>
 </p>
 <h4>Settings:</h4>
 <p>
