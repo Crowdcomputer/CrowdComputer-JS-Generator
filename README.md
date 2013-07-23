@@ -40,7 +40,7 @@ Here is an example of the page, which sends data to both <strong>CrowdComputer</
 	<strong>?type=send_all_to_crowdcomputer</strong> - sends all the data from the submitted form to CrowdComputer via <i>sendDataToCC</i>
 </p>
 <p>
-	<strong>?type=send_all_to_mturk</strong> - sends all the data from the submitted form to CrowdComputer and MTURK. It also requires a <i>tunnel.php</i> file. If you have this file not in a root directoty, add an additional parameter <strong>?tunnel_file=path/to/the/file.php</strong>.
+	<strong>?type=send_all_to_mturk</strong> - sends all the data from the submitted form to CrowdComputer and MTURK. It also requires a <i>tunnel.php</i> file. If you have this file not in a root directoty, add an additional parameter <strong>&tunnel_file=path/to/the/file.php</strong>.
 </p>
 
 <hr/>
