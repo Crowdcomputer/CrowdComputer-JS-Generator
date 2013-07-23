@@ -18,8 +18,17 @@ Here is an example of the page, which sends data to both <strong>CrowdComputer</
 
 
 <hr/>
-<h4>Deployed version:</h4>
+<h4>Online version:</h4>
 <p>
+<strong>Example for CC</strong>
+<a target='_blank' href='http://static.crowdcomputer.org/CC-JS-Generator/example_cc.html'>example_cc.html</a>
+</p>
+<p>
+<strong>Example for CC and MTURK</strong>
+<a target='_blank' href='http://static.crowdcomputer.org/CC-JS-Generator/example_amt.html'>example_amt.html</a>
+</p>
+<p>
+<strong>Library</strong>
 <a target='_blank' href='http://static.crowdcomputer.org/CC-JS-Generator/'>http://static.crowdcomputer.org/CC-JS-Generator/</a>
 </p>
 <h4>Settings:</h4>
