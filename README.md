@@ -31,6 +31,7 @@ Here is an example of the page, which sends data to both <strong>CrowdComputer</
 <strong>Library</strong>
 <a target='_blank' href='http://static.crowdcomputer.org/CC-JS-Generator/'>http://static.crowdcomputer.org/CC-JS-Generator/</a>
 </p>
+<hr/>
 <h4>Settings:</h4>
 <p>
 	<strong>no parameters</strong> - provides a function <i>sendDataToCC</i>,
